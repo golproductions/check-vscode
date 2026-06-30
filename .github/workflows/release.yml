@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Sync version from tag
+        run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version
+
+      - name: Install tooling
+        run: npm install -g @vscode/vsce ovsx
+
+      - name: Package extension
+        run: vsce package --out check-vscode.vsix
+
+      - name: Publish to Open VSX
+        run: ovsx publish check-vscode.vsix -p "${{ secrets.OVSX_TOKEN }}"

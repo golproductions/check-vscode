@@ -1,0 +1,7 @@
+.git/**
+.gitignore
+node_modules/**
+extension.src.js
+*.bak
+*.vsix
+.wrangler/**

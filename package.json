@@ -1,0 +1,71 @@
+{
+  "name": "gol-check",
+  "displayName": "GOL Check - Anti-Hallucination Engine",
+  "description": "AI agents hallucinate. Check catches it before it reaches your project. The universal anti-hallucination engine.",
+  "version": "3.0.7",
+  "publisher": "golproductions",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "keywords": [
+    "ai",
+    "hallucination",
+    "anti-hallucination",
+    "check",
+    "claude",
+    "cursor",
+    "mcp",
+    "ai-agents"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "golCheck.validateCommand",
+        "title": "GOL Check: Validate Command"
+      },
+      {
+        "command": "golCheck.validateClipboard",
+        "title": "GOL Check: Validate from Clipboard"
+      },
+      {
+        "command": "golCheck.showStatus",
+        "title": "GOL Check: Show Status"
+      }
+    ],
+    "configuration": {
+      "title": "GOL Check",
+      "properties": {
+        "golCheck.clientId": {
+          "type": "string",
+          "default": "",
+          "description": "Your GOL Productions Client ID. Get one free at golproductions.com/check.html"
+        },
+        "golCheck.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable Check validation"
+        },
+        "golCheck.autoValidate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically validate terminal commands via shell integration"
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/golproductions/check.git"
+  },
+  "homepage": "https://www.golproductions.com/check.html",
+  "license": "SEE LICENSE IN LICENSE",
+  "icon": "icon.png"
+}
